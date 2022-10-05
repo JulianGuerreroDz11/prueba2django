@@ -38,3 +38,9 @@ def despedida(request):
 
 def dameFecha(request):    
     return HttpResponse("La hora es %s" %fecha_actual)
+
+def curso_C(request):
+    return render(request,"cursoC.html",{"fecha":fecha_actual})
+
+def curso_Css(request):
+    return render(request,"cursoCss.html",{"fecha":fecha_actual})
