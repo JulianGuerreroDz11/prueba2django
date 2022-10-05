@@ -2,6 +2,8 @@ from pipes import Template
 from django.http import HttpResponse
 import datetime
 from django.template import Template,Context, loader
+from django.shortcuts import render
+
 
 #Variables
 nombre="Julian"
@@ -20,11 +22,16 @@ def saludo(request): #Primera vista
     documento=plt.render(ctx)   #Renderizado
     return HttpResponse(documento)
     """
+    """
     #FORMA USANDO LOADER NO OLVIDAR LA DIRECCION AGREGADA EN SETTINGS
     doc_externo=loader.get_template('miplanquilla.html')  
     documento=doc_externo.render({"nombre_persona":nombre,"apellido_persona":apellido,"hora_actual":fecha_actual,
     "temas":["Plantillas","Modelos","Formularios","Visitas","Despliegue"]})
     return HttpResponse(documento)
+    """
+    #FORMA USANDO RENDER NO OLVIDAR LA DIRECION AGREGADA EN SETTINGS
+    return render(request,"miplanquilla.html",{"nombre_persona":nombre,"apellido_persona":apellido,"hora_actual":fecha_actual,
+    "temas":["Plantillas","Modelos","Formularios","Visitas","Despliegue"]})
 
 def despedida(request):
     return HttpResponse("Hasta luego alumnos de Django")
