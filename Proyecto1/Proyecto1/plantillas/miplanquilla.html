@@ -10,5 +10,24 @@
     <h1 style="color: red">
         Hola alumnos esta es nuestra primera pagina con Django
     </h1>
+    <p>
+        El  nombre del profesor es : {{nombre_persona}} {{apellido_persona}}
+    </p>
+    <p>
+        La fecha que estas mirando la plantilla es: {{hora_actual}}
+    </p>
+    <p> 
+        <strong>Temas del curso:</strong>
+        <ul>
+            {% if temas%} 
+                {% for indice in temas %}
+                    <li>{{indice}}</li>
+                {% endfor %}
+            {% else %}
+                <p>Finalisaste los cursos</p>
+            {% endif %}
+        </ul>
+
+    </p>
 </body>
 </html>
